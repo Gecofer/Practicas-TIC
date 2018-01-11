@@ -9,9 +9,7 @@
 #include <termios.h>
 #include <fcntl.h>
 
-
 #else
-
 
 // Includes para Windows
 #include<windows.h>
@@ -29,15 +27,15 @@ const char *comports[RS232_PORTNR]={"\\\\.\\COM1",  "\\\\.\\COM2",  "\\\\.\\COM3
 #endif
 
 
-
 // Inicializar el puerto USB en el dispositivo dado por argumento
 int InicializarUSB(const char *portname) {
 
 	int USBPORT= -1; // Puerto USB a utilizar. -1 indica que no está asignado
 
 	#if defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__) 
-		
-		// IMPLEMENTACION PARA LINUX Y MAC
+	
+	// IMPLEMENTACION PARA LINUX Y MAC
+
 		struct termios toptions; // Estructura para control del puerto USB
 		
 		// Abrimos puerto USB para E/S, sin bloqueo del puerto 
@@ -83,9 +81,9 @@ int InicializarUSB(const char *portname) {
 		// Establecemos las opciones del puerto
 		tcsetattr(USBPORT, TCSANOW, &toptions);
 
-  #else
+  	#else 
 
-    // IMPLEMENTACION PARA WINDOWS
+  	// IMPLEMENTACION PARA WINDOWS
 
 		// Modo de apertura del puerto USB. E/S bidireccional serie normal de bytes
 		char mode[]={'8','N','1', 0};
@@ -111,8 +109,6 @@ int InicializarUSB(const char *portname) {
 
 		if (USBPORT == -1)
 			return -1;
-
-
 
 		char mode_str[128];
 		switch(BAUD_RATE)
@@ -245,6 +241,7 @@ int InicializarUSB(const char *portname) {
 }
 
 
+// Cierra las comunicaciones por el puerto USB para el descriptor dado por argumento
 void CerrarUSB(int &pd) {
 
 	#if defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__)
@@ -259,11 +256,11 @@ void CerrarUSB(int &pd) {
 
 	#endif
 
-	pd= -1;
+	pd = -1;
 }
 
 
-
+// Paraliza la ejecución del programa por unos milisegundos dados por argumento
 int Dormir(int ms) {
 
 	#if defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__)
@@ -280,12 +277,13 @@ int Dormir(int ms) {
 }
 
 
-
+// Función para enviar una cadena de caracteres por un descriptor de puerto USB
 bool sendUSB(int &pd, char *data) {
 
 	#if defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__)
 
     // IMPLEMENTACION PARA LINUX Y MAC
+
 		const int ndata= strlen(data)+1;
 
 		// Escribimos en el puerto
@@ -297,7 +295,6 @@ bool sendUSB(int &pd, char *data) {
 		Dormir(100);
 		
 		return aux == ndata;
-
 
 	#else
 
@@ -315,10 +312,10 @@ bool sendUSB(int &pd, char *data) {
 	  return false;
 
 	#endif
-
 }
 
 
+// Función para recibir datos desde USB
 bool receiveUSB (int &pd, char *data) {
 
 	#if defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__)
@@ -341,7 +338,6 @@ bool receiveUSB (int &pd, char *data) {
 
 		} while (c != '\0');
 
-
 	#else 
 
     // IMPLEMENTACION PARA WINDOWS
@@ -361,14 +357,13 @@ bool receiveUSB (int &pd, char *data) {
 			}
 		}
 
-
 	#endif
 
 	return true;
 }
 
 
-
+// Función para enviar un byte  por un descriptor de puerto USB
 bool sendByteUSB(int &pd, unsigned char data) {
 
 	#if defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__)
@@ -384,7 +379,6 @@ bool sendByteUSB(int &pd, unsigned char data) {
 		Dormir(100);
 		
 		return aux == 1;
-
 
 	#else
 
@@ -402,13 +396,11 @@ bool sendByteUSB(int &pd, unsigned char data) {
 	  return false;
 
 	#endif
-
 }
 
 
-
+// Función para recibir un byte desde USB.
 bool receiveByteUSB (int &pd, unsigned char &data) {
-
 
 	#if defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__)
 
@@ -438,10 +430,8 @@ bool receiveByteUSB (int &pd, unsigned char &data) {
 			}
 		}
 
-
 	#endif
 
 	return true;
-
 }
 

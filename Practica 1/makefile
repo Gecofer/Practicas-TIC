@@ -6,7 +6,7 @@ COMMPORTEMISOR = /dev/cu.usbmodem1461
 
 COMMPORTRECEPTOR = /dev/cu.usbmodem1441
 
-
+# ----- #
 
 arduecho: arduechocpp uartcpp
 	@echo Generando binario Arduino...
@@ -23,11 +23,9 @@ uartcpp:
 	@echo Compilando biblioteca UART...
 	avr-gcc -Os -mmcu=atmega328p -c -o obj/uart.o src/uart.cpp -Iinclude
 
-
 send:
 	@echo Enviando arduecho a Arduino
 	sudo avrdude -F -V -c arduino -p ATMEGA328P -P $(COMMPORT) -b 115200 -U flash:w:hex/arduecho.hex
-
 
 pcecho: pcechocpp ticcommpccpp
 	@echo Generando fichero binario pcecho...
@@ -37,11 +35,63 @@ pcechocpp:
 	@echo Compilando PCECHO...
 	g++ -c -o obj/pcecho.o src/pcecho.cpp -Iinclude
 
-
 ticcommpccpp:
 	@echo Compilando fuentes de biblioteca TICCommPC...
 	g++ -c -o obj/ticcommpc.o src/ticcommpc.cpp -Iinclude
 
+# ----- #
+
+arduLEDcontrol: arduLEDcontrolcpp uartcpp
+	@echo Generando binario Arduino...
+	avr-gcc -mmcu=atmega328p obj/arduLEDcontrol.o obj/uart.o -o obj/arduLEDcontrol.bin
+	@echo Generando HEX Arduino...
+	avr-objcopy -O ihex -R .eeprom obj/arduLEDcontrol.bin hex/arduLEDcontrol.hex
+	@echo Arduecho compilado. Ejecute make send para enviarlo a la plataforma Arduino.
+
+arduLEDcontrolcpp:
+	@echo Compilando arduLEDcontrol...
+	avr-gcc -Os -mmcu=atmega328p -c -o obj/arduLEDcontrol.o src/arduLEDcontrol.cpp -Iinclude
+
+pcLEDcontrol: pcLEDcontrolcpp ticcommpccpp
+	@echo Generando fichero binario pcLEDcontrol...
+	g++ -o bin/pcLEDcontrol obj/pcLEDcontrol.o obj/ticcommpc.o
+
+pcLEDcontrolcpp:
+	@echo Compilando PCECHO...
+	g++ -c -o obj/pcLEDcontrol.o src/pcLEDcontrol.cpp -Iinclude
+
+sendLEDcontrol:
+	@echo Enviando arduLEDcontrol a Arduino
+	sudo avrdude -F -V -c arduino -p ATMEGA328P -P $(COMMPORT) -b 115200 -U flash:w:hex/arduLEDcontrol.hex
+
+# ----- #
+
+arduLEDcontrol10: arduLEDcontrolcpp10 uartcpp
+	@echo Generando binario Arduino...
+	avr-gcc -mmcu=atmega328p obj/arduLEDcontrol10.o obj/uart.o -o obj/arduLEDcontrol10.bin
+	@echo Generando HEX Arduino...
+	avr-objcopy -O ihex -R .eeprom obj/arduLEDcontrol10.bin hex/arduLEDcontrol10.hex
+	@echo Arduecho compilado. Ejecute make send para enviarlo a la plataforma Arduino.
+
+arduLEDcontrolcpp10:
+	@echo Compilando arduLEDcontrol...
+	avr-gcc -Os -mmcu=atmega328p -c -o obj/arduLEDcontrol10.o src/arduLEDcontrol10.cpp -Iinclude
+
+pcLEDcontrol10: pcLEDcontrolcpp10 ticcommpccpp
+	@echo Generando fichero binario pcLEDcontrol10...
+	g++ -o bin/pcLEDcontrol10 obj/pcLEDcontrol10.o obj/ticcommpc.o
+
+pcLEDcontrolcpp10:
+	@echo Compilando PCECHO...
+	g++ -c -o obj/pcLEDcontrol10.o src/pcLEDcontrol10.cpp -Iinclude
+
+sendLEDcontrol10:
+	@echo Enviando arduLEDcontrol10 a Arduino
+	sudo avrdude -F -V -c arduino -p ATMEGA328P -P $(COMMPORT) -b 115200 -U flash:w:hex/arduLEDcontrol.hex
+
+
+
+# ----- #
 
 fotorreceptor:
 	@echo Generando binario Arduino...
@@ -88,7 +138,6 @@ sendReceptor:
 	@echo Enviando receptorArdu...
 	sudo avrdude -F -V -c arduino -p ATMEGA328P -P $(COMMPORTEMISOR) -b 115200 -U flash:w:hex/receptorArdu.hex
 
-
 receptorPC: receptorPCcpp ticcommpccpp
 	@echo Generando fichero binario receptorPC
 	g++ -o bin/receptorPC obj/receptorPC.o obj/ticcommpc.o
@@ -96,7 +145,6 @@ receptorPC: receptorPCcpp ticcommpccpp
 receptorPCcpp:
 	@echo Compilando receptorPC..
 	g++ -c -o obj/receptorPC.o src/receptorPC.cpp -Iinclude
-
 
 emisorPC: emisorPCcpp ticcommpccpp
 	@echo Generando fichero binario emisorPC
@@ -111,9 +159,35 @@ arducodifcpp:
 	@echo Compilando fuentes de biblioteca arducodif...
 	avr-gcc -Os -mmcu=atmega328p -c -o obj/arducodif.o src/arducodif.cpp -Iinclude
 
+# ----- #
 
 
+fotoArdu: ticcommarducpp uartcpp fotoArducpp
+	@echo Generado binario Arduino...
+	avr-gcc -mmcu=atmega328p obj/ticcommardu.o obj/uart.o obj/fotoArdu.o -o bin/fotoArdu.bin
+	@echo Generando HEX Arduino receptor...
+	avr-objcopy -O ihex -R .eeprom bin/fotoArdu.bin hex/fotoArdu.hex
+	@echo fotoArdu compilado. Ejecute make sendReceptorFoto para enviarlo a la plataforma Arduino.
 
+fotoArducpp:
+	@echo Compilando fotoArdu...
+	avr-gcc -Os -mmcu=atmega328p -c -o obj/fotoArdu.o src/fotoArdu.cpp -Iinclude
+
+fotoPC: fotoPCcpp ticcommpccpp
+	@echo Generando fichero binario fotoPC...
+	g++ -o bin/fotoPC obj/fotoPC.o obj/ticcommpc.o
+
+fotoPCcpp:
+	@echo Compilando fotoPC...
+	g++ -c -o obj/fotoPC.o src/fotoPC.cpp -Iinclude
+
+
+sendReceptorFoto:
+	@echo Eviando fotoArdu a Arduino
+	sudo avrdude -F -V -c arduino -p ATMEGA328P -P $(COMMPORT) -b 115200 -U flash:w:$(HEX)/fotoArdu.hex
+
+
+# ----- #
 
 emisorArduS5: ticcommarducpp emisorArduS5cpp uartcpp arducodifcpp
 	@echo Generando binario Arduino emisor...
@@ -125,6 +199,7 @@ emisorArduS5: ticcommarducpp emisorArduS5cpp uartcpp arducodifcpp
 emisorArduS5cpp:
 	@echo Compilando emisorArduS5...
 	avr-gcc -Os -mmcu=atmega328p -c -o obj/emisorArduS5.o src/emisorArduS5.cpp -Iinclude
+
 sendEmisorS5:
 	@echo Enviando emisorArdu a Arduino
 	sudo avrdude -F -V -c arduino -p ATMEGA328P -P $(COMMPORTEMISOR) -b 115200 -U flash:w:hex/emisorArduS5.hex
@@ -135,9 +210,11 @@ receptorArduS5: ticcommarducpp uartcpp receptorArducppS5 arducodifcpp
 	@echo Generando HEX Arduino receptor sesion 5...
 	avr-objcopy -O ihex -R .eeprom obj/receptorArduS5.bin hex/receptorArduS5.hex
 	@echo receptorArdu compilado. Ejecute make sendReceptorS5 para enviarlo a la plataforma Arduino.
+
 receptorArducppS5:
 	@echo Compilando TICCOmmArdu sesion 5...
 	avr-gcc -Os -mmcu=atmega328p -c -o obj/receptorArduS5.o src/receptorArduS5.cpp -Iinclude
+
 sendReceptorS5:
 	@echo Enviando receptorArdu sesion 5...
 	sudo avrdude -F -V -c arduino -p ATMEGA328P -P $(COMMPORTRECEPTOR) -b 115200 -U flash:w:hex/receptorArduS5.hex
@@ -152,6 +229,17 @@ receptorPCcppS5:
 emisorPCS5: emisorPCcppS5 ticcommpccpp
 	@echo Generando fichero binario emisorPCS5
 	g++ -o bin/emisorPCS5 obj/emisorPCS5.o obj/ticcommpc.o 
+
 emisorPCcppS5:
 	@echo Compilando emisorPC sesion 5..
 	g++ -c -o obj/emisorPCS5.o src/emisorPCS5.cpp -Iinclude
+
+# ----- #
+
+
+clean:
+	@echo
+	@echo Haciendo limpieza...
+	rm -Rf $(OBJ)/* $(BIN)/* $(HEX)/*
+	@echo Limpieza terminada
+	@echo

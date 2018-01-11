@@ -12,17 +12,16 @@ using namespace std;
 #define DEVICE "/dev/cu.usbmodem1421"
 
 
- 
 int main(int argc, char *argv[]) {
 
-  int fd; // Descriptor de puerto del puerto USB
-  char buf[129]; // Buffer de salida. Tamaño máximo de 128 caracteres
-  int ndata; // Número de datos en el buffer
-  int aux;
+  int fd;         // Descriptor de puerto del puerto USB
+  char buf[129];  // Buffer de salida. Tamaño máximo de 128 caracteres
+  int ndata;      // Número de datos en el buffer
+  int aux;        // Variable auxiliar
+
   cout << 1;
 
   // Inicializamos puerto
-
 	fd = InicializarUSB(DEVICE);
   if(fd < 0){
     cout << "Error inicializando el puerto" << DEVICE << endl;
@@ -31,23 +30,23 @@ int main(int argc, char *argv[]) {
 
   // Bucle hasta que salgamos (cuando no introduzcamos nada)
   do {
-
 		cout<< "Escriba algo para enviar a arduino:";
     cin.getline(buf, 128);
 
-    ndata = strlen(buf);
+    ndata = strlen(buf); // Tamaño del buffer de salida
 
-    if(ndata >0){
+    if(ndata >0){ // Enviamos si hay algo
       aux = write(fd, buf, ndata);
       tcflush(fd, TCIFLUSH);
       cout << "Bytes enviados" << aux << "/" <<ndata << endl;
 
+      // Comprobamos errores en el envío
       if(aux < ndata){
         cout << "Error el buffer tiene "<< ndata << " bytes pero se enciaron " << aux << endl;
         ndata = 0;
       }
 
-      //si se envio algun dato esperamos respuesta:
+      // Si se envio algun dato esperamos respuesta de Arduino
       if( aux > 0){
         aux = read(fd, buf, 128);
         if(aux > 0){
@@ -58,16 +57,13 @@ int main(int argc, char *argv[]) {
       }
     }
 
-      
-
   // Se sale si no enviamos ningún caracter
   } while (ndata > 0);
 
-
   // Cerramos el puerto USB
-
 	CerrarUSB(fd);
   cout <<"\nFin del programa.\n\n";
+  
   return 0;
 }
 

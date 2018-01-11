@@ -1,46 +1,44 @@
-
 #include "ticcommardu.h"
 #include "arducodif.h"
 #include <ctype.h>
 
 
-
+// Función que codifica una cadena
 void codificador (const char *orig, const int nOrig, char * codif, unsigned char *util){
 
     for (int i = 0; i < nOrig; i++){
 
-    	//codificamos uno a uno los símbolos de la cadena:
     	char byte_salida;
     	unsigned char util_salida;
 
+    	// Codificamos uno a uno los símbolos de la cadena:
         codificaSimbolo(toupper(orig[i]), byte_salida, util_salida);
 
-        //Guardamos los símbolos codificados y su tamanio util:
+        // Guardamos los símbolos codificados y su tamanio util:
         codif[i] = byte_salida;
         util[i] = util_salida;
     }
-
 }
 
 
-
+// Función que decodifica una cadena
 void decodificador (const char *codif, const unsigned char *utiles, const int nCodif, char *decodif){
 
     for (int i = 0; i < nCodif; i++){
 
-    	//codificamos uno a uno los símbolos de la cadena:
     	unsigned char letra_decodificada;
 
+    	// Codificamos uno a uno los símbolos de la cadena:
     	decodificaSimboloMorse(codif[i], utiles[i], letra_decodificada);
 
     	decodif[i] = letra_decodificada;
     	
     }
-
 }
 
+
+// Función que codifica un símbolo Morse
 void codificaSimbolo(const char corig, char & ccodif, unsigned char & nUtil){
-	
 	
 	switch(corig){
 		case 'A':
@@ -167,6 +165,7 @@ void codificaSimbolo(const char corig, char & ccodif, unsigned char & nUtil){
 }
 
 
+// Función que decodifica un símbolo Morse
 void decodificaSimboloMorse(const char ccodif, const unsigned char nUtils, unsigned char & decodif){
 
 	switch(nUtils){
@@ -286,7 +285,5 @@ void decodificaSimboloMorse(const char ccodif, const unsigned char nUtils, unsig
 
 			}
 		break;
-	
-
 	}
 }

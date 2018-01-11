@@ -1,4 +1,3 @@
-
 #ifndef __TICCOMMARDU__
 
 #define __TICCOMMARDU__
@@ -20,7 +19,6 @@
 // Constante que representa una ráfaga larga (raya)
 #define LASER_DASH 1
 
-
 // Constante que representa ninguna ráfaga
 #define LASER_NONE 2
 
@@ -30,8 +28,6 @@
 
 // Constante que representa el que laser está apagado
 #define LASER_LOW 0
-
-
 
 
 /**
@@ -53,7 +49,6 @@ void initLaserEmitter();
 void sendLaserBit(const unsigned char what);
 
 
-
 /**
  * Función para enviar por láser un símbolo.
  *
@@ -64,10 +59,6 @@ void sendLaserBit(const unsigned char what);
  *
  */
 void sendLaserBit2(const unsigned char what);
-
-
-
-
 
 
 /**
@@ -104,7 +95,6 @@ void recvLaserBit(unsigned char & what);
 void recvLaserBit2(unsigned char & what);
 
 
-
 /**
  * Función para enviar un mensaje por USB a PC
  * 
@@ -114,8 +104,6 @@ void recvLaserBit2(unsigned char & what);
  * Salidas: true si los datos se enviaron con éxito, false en otro caso
  */
 bool arduSendUSB(const char *data);  
-
-
 
 
 /**
@@ -129,7 +117,6 @@ bool arduSendUSB(const char *data);
 bool arduReceiveUSB (char *data);
 
 
-
 /**
  * Función para enviar un byte por USB a PC
  * 
@@ -139,8 +126,6 @@ bool arduReceiveUSB (char *data);
  * Salidas: true si los datos se enviaron con éxito, false en otro caso
  */
 bool arduSendByteUSB(unsigned char data);  
-
-
 
 
 /**
@@ -155,5 +140,3 @@ bool arduReceiveByteUSB (unsigned char &data);
 
 
 #endif
-
-

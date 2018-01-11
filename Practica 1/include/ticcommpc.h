@@ -1,4 +1,3 @@
-
 #ifndef __TICCOMMPC__
 
 #define __TICCOMMPC__
@@ -30,7 +29,6 @@ int Dormir(int ms);
 void CerrarUSB(int &pd);
 
 
-
 /**
  * Función para enviar una cadena de caracteres por un descriptor de puerto USB
  * @param pd Descriptor del puerto USB a utilizar
@@ -46,7 +44,6 @@ bool sendUSB(int &pd, char *data);
  * @param data Buffer de salida. Debe contener memoria para almacenar los datos que se recibirán.
  */
 bool receiveUSB (int &fd, char *data);
-
 
 
 /**

@@ -8,6 +8,7 @@
 #define DELAY_US 500
 
 int main(void){
+
     unsigned char dato; // dato a leer desde el sensor
     bool currentLEDstate = false; // Estado actual del LED: encendido o apagado
     
@@ -22,15 +23,17 @@ int main(void){
     currentLEDstate = false;
     
     while (1) {
+
         // Cogemos que hay en el pin 8 como entrada
-        
         dato = PINB & 0x01;
         
+        // Si el Pin 8 > 0 (hay luz), entonces encendemos el LED
         if (dato > 0 && !currentLEDstate){
             PORTB |= _BV(PORTB4);
             currentLEDstate = true;
         }
         
+        // en otro caso, lo apagamos
         else if (dato == 0 && currentLEDstate){
             PORTB &= ~_BV(PORTB4);
             currentLEDstate = false;
