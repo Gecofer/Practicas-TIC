@@ -1,16 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////
-//
-// Juan Manuel Fajardo Sarmiento
-// Francisco Javier Caracuel Beltrán
-//
-// TIC - 2017/2018 - 4º - GII - CCIA
-//
-// receptorArdu.cpp
-//
-// Programa para Arduino que recibe la señal del laser
-//
-////////////////////////////////////////////////////////////////////////////////
-
 #include <ticcommardu.h>
 #include <avr/interrupt.h>
 #include <uart.h>

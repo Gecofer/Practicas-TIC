@@ -39,7 +39,7 @@ ticcommpccpp:
 	@echo Compilando fuentes de biblioteca TICCommPC...
 	g++ -c -o obj/ticcommpc.o src/ticcommpc.cpp -Iinclude
 
-# ----- #
+# ----- Sesión 2 - Apartado 4.3 - Ejercicio 9 ----- #
 
 arduLEDcontrol: arduLEDcontrolcpp uartcpp
 	@echo Generando binario Arduino...
@@ -64,7 +64,7 @@ sendLEDcontrol:
 	@echo Enviando arduLEDcontrol a Arduino
 	sudo avrdude -F -V -c arduino -p ATMEGA328P -P $(COMMPORT) -b 115200 -U flash:w:hex/arduLEDcontrol.hex
 
-# ----- #
+# ----- Sesión 2 - Apartado 4.3 - Ejercicio 10 ----- #
 
 arduLEDcontrol10: arduLEDcontrolcpp10 uartcpp
 	@echo Generando binario Arduino...

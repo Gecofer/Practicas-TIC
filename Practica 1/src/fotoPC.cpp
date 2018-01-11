@@ -1,16 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////
-//
-// Juan Manuel Fajardo Sarmiento
-// Francisco Javier Caracuel Beltrán
-//
-// TIC - 2017/2018 - 4º - GII - CCIA
-//
-// receptorPC.cpp
-//
-// Programa receptor para el PC. Mostrará los datos que llegan del fotorreceptor
-//
-////////////////////////////////////////////////////////////////////////////////
-
 #include <ticcommpc.h>
 #include <iostream>
 
