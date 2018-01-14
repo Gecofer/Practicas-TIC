@@ -25,6 +25,13 @@
 ***************************************************************************
 */
 
+/*
+AUTORES:
+	- Gema Correa Fernandez
+	- Samuel Cardenete Rodríguez
+	- Pablo Parra Garófano
+*/
+
 /* Last revision: August 5, 2017 */
 
 /* For more info and how to use this library, visit: http://www.teuniz.net/RS-232/ */

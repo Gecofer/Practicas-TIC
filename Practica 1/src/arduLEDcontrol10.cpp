@@ -1,4 +1,9 @@
-
+/*
+AUTORES:
+  - Gema Correa Fernandez
+  - Samuel Cardenete Rodríguez
+  - Pablo Parra Garófano
+*/
 // Ciclo de reloj del procesador: 16MHz
 #define F_CPU 16000000UL
 

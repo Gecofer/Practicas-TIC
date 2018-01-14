@@ -1,3 +1,10 @@
+/*
+AUTORES:
+    - Gema Correa Fernandez
+    - Samuel Cardenete Rodríguez
+    - Pablo Parra Garófano
+*/
+
 #define UART_BAUD_RATE 9600
 
 #include <ticcommardu.h>

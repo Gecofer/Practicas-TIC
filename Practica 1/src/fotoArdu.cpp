@@ -1,3 +1,10 @@
+/*
+AUTORES:
+    - Gema Correa Fernandez
+    - Samuel Cardenete Rodríguez
+    - Pablo Parra Garófano
+*/
+
 #include <ticcommardu.h>
 #include <avr/interrupt.h>
 #include <uart.h>

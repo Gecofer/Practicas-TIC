@@ -1,3 +1,10 @@
+/*
+AUTORES:
+  - Gema Correa Fernandez
+  - Samuel Cardenete Rodríguez
+  - Pablo Parra Garófano
+*/
+
 #ifndef UART_H
 #define UART_H
 /************************************************************************

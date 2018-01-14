@@ -25,6 +25,13 @@
 ***************************************************************************
 */
 
+/*
+AUTORES:
+  - Gema Correa Fernandez
+  - Samuel Cardenete Rodríguez
+  - Pablo Parra Garófano
+*/
+
 
 /* Last revision: August 5, 2017 */
 

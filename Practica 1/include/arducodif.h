@@ -5,6 +5,12 @@
 
 
 /*
+AUTORES:
+	- Gema Correa Fernandez
+	- Samuel Cardenete Rodríguez
+	- Pablo Parra Garófano
+*/
+/*
  * Función que codificada un mensaje
  * 
  * Entradas: una cadena de caracteres 'orig' con longitud 'nOrig'

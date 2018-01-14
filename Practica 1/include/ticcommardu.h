@@ -1,3 +1,11 @@
+/*
+AUTORES:
+	- Gema Correa Fernandez
+	- Samuel Cardenete Rodríguez
+	- Pablo Parra Garófano
+*/
+
+
 #ifndef __TICCOMMARDU__
 
 #define __TICCOMMARDU__

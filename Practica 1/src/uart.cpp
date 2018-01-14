@@ -1,3 +1,10 @@
+/*
+AUTORES:
+  - Gema Correa Fernandez
+  - Samuel Cardenete Rodríguez
+  - Pablo Parra Garófano
+*/
+
 /*************************************************************************
 Title:    Interrupt UART library with receive/transmit circular buffers
 Author:   Peter Fleury <pfleury@gmx.ch>   http://tinyurl.com/peterfleury

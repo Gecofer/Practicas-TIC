@@ -1,3 +1,11 @@
+/*
+AUTORES:
+	- Gema Correa Fernandez
+	- Samuel Cardenete Rodríguez
+	- Pablo Parra Garófano
+*/
+
+
 #include <ticcommpc.h>
 #include <string.h>
 #include <stdio.h>

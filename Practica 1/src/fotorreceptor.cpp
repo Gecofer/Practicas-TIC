@@ -1,3 +1,10 @@
+/*
+AUTORES:
+    - Gema Correa Fernandez
+    - Samuel Cardenete Rodríguez
+    - Pablo Parra Garófano
+*/
+
 #define F_CPU 16000000UL
 
 //hola

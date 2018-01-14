@@ -1,3 +1,12 @@
+/*
+AUTORES:
+	- Gema Correa Fernandez
+	- Samuel Cardenete Rodríguez
+	- Pablo Parra Garófano
+*/
+
+
+
 #ifndef __TICCOMMPC__
 
 #define __TICCOMMPC__

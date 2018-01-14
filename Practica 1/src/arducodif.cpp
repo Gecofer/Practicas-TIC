@@ -1,3 +1,11 @@
+/*
+AUTORES:
+	- Gema Correa Fernandez
+	- Samuel Cardenete Rodríguez
+	- Pablo Parra Garófano
+*/
+
+
 #include "ticcommardu.h"
 #include "arducodif.h"
 #include <ctype.h>
