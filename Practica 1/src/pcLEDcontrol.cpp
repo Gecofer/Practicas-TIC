@@ -14,7 +14,6 @@ AUTORES:
 using namespace std;
  
 // Puerto de comunicaciones con arduino
-/* MODIFICAR EL PUERTO CON AQUEL DONDE SE VAYA A CONECTAR ARDUINO */
 #define DEVICE "/dev/cu.usbmodem1411"
 
 
@@ -27,12 +26,9 @@ int main(int argc, char *argv[]) {
 
   // Se comprueba si se ha recibido la orden por parámetro
   if (argc != 2) {
-
     cout << "\nError al ejecutar el programa...";
     cout << "\nUso: " << argv[0] << " [On|Off]\n\n";
-
     exit(-1);
-
   }
 
   // Inicializamos puerto
@@ -58,19 +54,16 @@ int main(int argc, char *argv[]) {
     // Si se envio algun dato esperamos respuesta de Arduino
     if( aux > 0){
 
-      unsigned int n = 0;
+      unsigned int tam = 0;
 
       do {
-        
-        aux = read(fd, buf+n, 128);
-        n += aux;
-      
-      } while (buf[n-1] != '\0');
+        aux = read(fd, buf+tam, 128);
+        tam += aux;
+      } while (buf[tam-1] != '\0');
 
       if(aux > 0){
         cout << "\t Mensaje: "<< buf << endl<< endl;
-      }
-      else 
+      } else 
         cout<< "\tERROR RECIBIENDO DATOS";
     }
   }

@@ -102,9 +102,9 @@ int main(void) {
     unsigned int size = strlen(mensaje);
     contador = 0;
 
-    // Se recorre la cadena completa
+    // Se recorre la cadena 
     while (contador <= size) {
-      uart_putc(mensaje[contador]); // Se envía el carácter
+      uart_putc(mensaje[contador]); // Se envía carácter
       contador++;
     }
 

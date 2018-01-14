@@ -44,9 +44,7 @@ int main(){
     // Interrupciones
     sei();
 
-
 	initLaserEmitter();
-
 
 	char datos[101];
 	DDRB|= 0X02;
@@ -92,8 +90,6 @@ int main(){
 
 			arduSendUSB(entrada);			
 	    }
-
-	    
 
 	}
 

@@ -14,7 +14,6 @@ AUTORES:
 
 void initLaserEmitter() {
 
-
   // Asumimos que está en el pin 12 de Arduino.
   DDRB |= _BV(DDB4);
 

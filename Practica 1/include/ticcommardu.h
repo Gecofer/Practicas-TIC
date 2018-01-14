@@ -10,30 +10,24 @@ AUTORES:
 
 #define __TICCOMMARDU__
 
+
 // Ciclo de reloj del procesador: 16MHz
 #define F_CPU 16000000UL
 
-
 // Tiempo de ciclo para comunicaciones por láser, en milisegundos
 #define UMBRAL_U 9
-
 // Tiempo de muestreo
 #define SAMPLE_PERIOD (UMBRAL_U/3)
 
-
 // Constante que representa una ráfaga corta (puntos)
 #define LASER_DOT 0
-
 // Constante que representa una ráfaga larga (raya)
 #define LASER_DASH 1
-
 // Constante que representa ninguna ráfaga
 #define LASER_NONE 2
 
-
 // Constante que representa el que laser está encendido
 #define LASER_HIGH 1
-
 // Constante que representa el que laser está apagado
 #define LASER_LOW 0
 

@@ -54,8 +54,8 @@ int main(void){
     initLaserReceiver();
     bool fin_mensaje = false;
     bool fin_simbolo = false;
-    while(1){
 
+    while(1){
 
         fin_mensaje = false;
         fin_simbolo = false;
@@ -66,12 +66,10 @@ int main(void){
         pos = 1;
         nUtil = 0;
 
-         // no hacer nada
+        // no hacer nada
         do {
             recvLaserBit(L);
         } while (L == LASER_NONE);
-
-
 
         while (!fin_mensaje){
 
@@ -83,10 +81,7 @@ int main(void){
                 pos <<=1;
                 nUtil++;
 
-
                 recvLaserBit(L);
-
-                
                 
                 fin_simbolo = (L == LASER_NONE);
             }
@@ -105,13 +100,9 @@ int main(void){
             pos = 1;
             nUtil = 0;
 
-
             recvLaserBit(L);
 
-            
             fin_mensaje = (L == LASER_NONE);
-
-
         }
 
         for (int i = 0; i < n; i++){
@@ -122,9 +113,7 @@ int main(void){
         cadena[n] = '\0';
        
         arduSendUSB(cadena);
-
     }
     
     return 0;
-    
 }

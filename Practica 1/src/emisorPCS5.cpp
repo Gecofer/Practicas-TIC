@@ -47,7 +47,6 @@ int main(int argc, char * argv[]){
 
    		sendUSB(fd, buf);
 
-
 		receiveUSB(fd, resultado);
 			
 		cout << "Mensaje recibido: "<< resultado << endl;

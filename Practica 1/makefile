@@ -1,4 +1,3 @@
-
 # Puerto de comunicaciones donde se encuentra Arduino.
 COMMPORT = /dev/cu.usbmodem1411
 
@@ -89,8 +88,6 @@ sendLEDcontrol10:
 	@echo Enviando arduLEDcontrol10 a Arduino
 	sudo avrdude -F -V -c arduino -p ATMEGA328P -P $(COMMPORT) -b 115200 -U flash:w:hex/arduLEDcontrol.hex
 
-
-
 # ----- #
 
 fotorreceptor:
@@ -104,6 +101,7 @@ fotorreceptor:
 sendfotorreceptor:
 	sudo avrdude -F -V -c arduino -p ATMEGA328P -P $(COMMPORT) -b 115200 -U flash:w:hex/fotorreceptor.hex
 
+# ----- #
 
 emisorArdu: ticcommarducpp emisorArducpp uartcpp arducodifcpp
 	@echo Generando binario Arduino emisor...
@@ -154,13 +152,11 @@ emisorPCcpp:
 	@echo Compilando emisorPC..
 	g++ -c -o obj/emisorPC.o src/emisorPC.cpp -Iinclude
 
-
 arducodifcpp:
 	@echo Compilando fuentes de biblioteca arducodif...
 	avr-gcc -Os -mmcu=atmega328p -c -o obj/arducodif.o src/arducodif.cpp -Iinclude
 
 # ----- #
-
 
 fotoArdu: ticcommarducpp uartcpp fotoArducpp
 	@echo Generado binario Arduino...
@@ -181,11 +177,9 @@ fotoPCcpp:
 	@echo Compilando fotoPC...
 	g++ -c -o obj/fotoPC.o src/fotoPC.cpp -Iinclude
 
-
 sendReceptorFoto:
 	@echo Eviando fotoArdu a Arduino
 	sudo avrdude -F -V -c arduino -p ATMEGA328P -P $(COMMPORT) -b 115200 -U flash:w:$(HEX)/fotoArdu.hex
-
 
 # ----- #
 
@@ -235,7 +229,6 @@ emisorPCcppS5:
 	g++ -c -o obj/emisorPCS5.o src/emisorPCS5.cpp -Iinclude
 
 # ----- #
-
 
 clean:
 	@echo

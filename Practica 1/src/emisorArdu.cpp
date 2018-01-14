@@ -10,6 +10,7 @@ AUTORES:
 #include <arducodif.h>
 
 int main(){
+	
 	initLaserEmitter();
 
 	while(1){
@@ -20,12 +21,11 @@ int main(){
 			int i =0;
 			
 			char c;
-			do{
+
+			do {
 				c = datos[i];
 				//sendSymbol(c);
-			}while(c != '\0');
-			
-			
+			} while(c != '\0');
 
 			sendLaserBit(LASER_DOT);
 			sendLaserBit(LASER_DOT);
@@ -44,12 +44,7 @@ int main(){
 
 			sendLaserBit(LASER_NONE);
 		}
-
-
-
-
 	}
-
 
 	return 0;
 }

@@ -1,15 +1,16 @@
-
-#ifndef __ARDUCODIF__
-
-#define __ARDUCODIF__
-
-
 /*
 AUTORES:
 	- Gema Correa Fernandez
 	- Samuel Cardenete Rodríguez
 	- Pablo Parra Garófano
 */
+
+
+#ifndef __ARDUCODIF__
+
+#define __ARDUCODIF__
+
+
 /*
  * Función que codificada un mensaje
  * 
@@ -59,8 +60,3 @@ void decodificaSimboloMorse(const char ccodif, const unsigned char nUtils, unsig
 
 
 #endif
-
-
-
-
-
