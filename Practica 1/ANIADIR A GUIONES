@@ -1,0 +1,78 @@
+PRACTICA 1:
+
+---------SESION 2:------------
+
+Ejercicio 9:
+
+Despues de "make sendLEDcontrol" Añadir la linea:
+	"./bin/pcLEDcontrol"
+
+Ejercicio 10:
+
+Despues de "make sendLEDcontrol10" Añadir la linea:
+	"./bin/pcLEDcontrol10"
+
+
+
+---------SESION 3:------------
+
+**Ejercicio 5.2**:
+
+Diagramas de compilación:
+(LAS FOTOS QUE HE ENVIADO POR WHATSAPP)
+
+Que contiene cada uno de los ficheros:
+
+	- fotoPC.cpp: Un bucle infinito donde en cada iteración recibe 0 y 1 desde 
+		la placa arduino. En función de si recibe cero o uno, imprime un mensaje distinto.
+	- fotoArdu.cpp: Un bucle infinito donde en cada iteración se comprueba el estado del fotorresistor,
+		si detecta luz envia 1 y si no envía 0.
+	- ticcommpc.cpp: contiene funciones para la comunicación con el pc.
+	- ticcommardu.cpp: contiene funciones para la comunicación entre el arduino y el ordenador.
+	- uart.cpp: biblioteca para la transmisión serial por interrupciones.
+
+
+Instrucciones para compilar y ejecutar:
+
+	1. make fotoArdu
+	2. make fotoPC
+	3. make sendReceptorFoto
+	4. ./bin/fotoPC
+
+
+**Ejercicio 5.3**:
+
+	- Módulo KY-008: Es un Diodo Emisor de Laser que funciona a 5V y que emite a una longitud de onda de 650nm. 
+		Además, su precio es reducido: 0.4 €
+
+	- Módulo SHT126: Excelente receptor en larga distancia, basado en el sensor IS1U60 
+		Cuando la luz de un rayo láser incida con este sensor, este emitirá una señal digital 
+		que podrá interpretarse como un "1" o "0" lógico. El precio oscila los 3€
+
+	- Módulo laser para medir distancias: Alrededor de 5€. 
+
+	- Módulos de laseres verdes: Se trata de lasers que llegan a más de 1Km de distancia, con una
+		longitud de onda de 3000mW. El precio ronda los 100€.
+
+
+
+---------SESION 4-5:------------
+
+**Apartado 6.1**:
+
+Las dos posibles alternativas al laser podrían serl las siguientes:
+
+	- Comunicación por radio frecuencia: La principal ventaja que posee la comunicacio¡ón por ondas radio es
+		la larga distancia a la que se puede realizar la comunicación. Necesitaríamos un emisor que transmitiera
+		la información por radio frecuencia, mientras que el receptor, con una antena captara y decodificara 
+		la información transmitida. La principal desventaja es el ruido que puede existir, puesto que pueden interferir 
+		emisores externos a nuestro sistema que empleen la misma frecuencia de emisión que nosotros 
+		(emisoras de radio, comunicaciones...)
+
+	- Comunicación por infrarojos: Es posible emplear un emisor de infra rojos (como podría ser un led infrarojo) y
+		 un receptor de infrarojos para la comunicación. Sería recomentable para distancias cortas, como puede ser
+		 un mando de la televisión. La principal ventaja es el coste, que es muy bajo,
+		 pero el problema estaría en que existe mucha luz infraroja que actua como ruido en nuestra comunicación.
+
+
+**Apartado 6.4**:
