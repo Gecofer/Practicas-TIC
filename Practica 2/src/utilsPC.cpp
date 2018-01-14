@@ -1,3 +1,10 @@
+/*
+AUTORES:
+    - Gema Correa Fernandez
+    - Samuel Cardenete Rodríguez
+    - Pablo Parra Garófano
+*/
+
 /**
   * @file 
   * @brief Implementadas las funciones leerFichero y calcularProbabilidades

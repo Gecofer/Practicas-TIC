@@ -1,3 +1,10 @@
+/*
+AUTORES:
+    - Gema Correa Fernandez
+    - Samuel Cardenete Rodríguez
+    - Pablo Parra Garófano
+*/
+
 #ifndef __UTILSPC__
 
 #define __UTILSPC__
